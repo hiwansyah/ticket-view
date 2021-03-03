@@ -51,6 +51,7 @@ public class employeeController {
 //            
 //        return "new_employee";
 //    }
+    
     @GetMapping("/shownewemployeeform")
     public String showNewEmployeeForm(Model model) {
         Employee employee = new Employee();
@@ -72,6 +73,7 @@ public class employeeController {
             @RequestParam(value = "employeeName", required = false) String employeeName,
             @RequestParam(value = "password", required = false) String password
     ) {
+        
          Employee employee = new Employee(employeeId, employeeName, password);
 //         employee.setEmployeeId(employeeId);
 //         employee.setEmployeeName(employeeName);
