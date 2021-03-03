@@ -34,7 +34,7 @@ public class priorityController {
     public String showPriorityList(Model m){
     
         m.addAttribute("listPriority",prioServImp.getAll());
-        return "showPriority";
+        return "priority";
     }
     
     //menampilkan halaman tambah priority
@@ -50,7 +50,7 @@ public class priorityController {
     public String savaPriority(@ModelAttribute("priority") Priority priority){
     
         prioServImp.save(priority);
-        return "redirec:showPriority";
+        return "redirect:/showPriority";
     }
     
     // menampilkan form update
@@ -59,28 +59,27 @@ public class priorityController {
     
         Priority priority = prioServImp.getPriorityById(id);
         model.addAttribute("priority",priority);
-        return "showFormUpdatePriority";
+        return "priorityUpdate";
     }
     
     //menyimpan priority update
     @RequestMapping(value = "/saveUpdatePriority/{id}", method = RequestMethod.POST)
     public String savaUpdatePriority(
             
-            @RequestParam String id,
-            @RequestParam String name, 
-            @RequestParam Integer RespTime, 
-            @RequestParam Integer ResolvTime
+//            @RequestParam String id,
+            @RequestParam(value="priorityName") String name,  
+            @RequestParam(value="responseTime") Integer RespTime, 
+            @RequestParam(value="resolveTime") Integer ResolvTime
     ){
-    
-        Priority priority = new Priority();
+            
+        Priority priority = new Priority(name, ResolvTime, ResolvTime);
         
-        priority.setPriorityId(id);
-        priority.setPriorityName(name);
-        priority.setResponseTime(RespTime);
-        priority.setResolveTime(ResolvTime);
+//        priority.setPriorityName(name);
+//        priority.setResponseTime(RespTime);
+//        priority.setResolveTime(ResolvTime);
         prioServImp.savePriority(priority);
-//        prioServImp.save(priority);
-        return "redirec:showPriority";
+
+        return "redirect:showPriority";
     }
     
     @GetMapping("/deletePriority/{id}")

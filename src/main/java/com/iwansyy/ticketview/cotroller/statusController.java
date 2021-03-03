@@ -53,14 +53,14 @@ public class statusController {
         Status status = statServImp.getStatusById(id);
         model.addAttribute("status", status);
         
-        return "updateStatus";
+        return "statusUpdate";
     }
     
     @GetMapping("/deleteStatus/{id}")
     public String deleteStatus(@PathVariable (value ="id") String id){
         
         statServImp.deleteById(id);
-        return "deleteStatus";
+        return "redirect:/showStatus";
     }
    
 }
