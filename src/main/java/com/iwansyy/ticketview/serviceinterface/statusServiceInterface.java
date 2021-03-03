@@ -7,7 +7,7 @@
 package com.iwansyy.ticketview.serviceinterface;
 
 import com.iwansyy.ticketview.entities.Status;
-import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -16,9 +16,11 @@ import java.util.List;
 
 public interface statusServiceInterface {
     void save(Status status);
-    List<Status> getAllStatus();
+    
     Status getStatusById(String id);
     void update(Status status);
     void delete(Status status);
     void deleteById(String id);
+    Iterable <Status> getAll();
+    Optional <Status> findById(String id);
 }
