@@ -14,7 +14,7 @@ and open the template in the editor.
           crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Employee Management</title>
+        <title>Services Management</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -24,23 +24,21 @@ and open the template in the editor.
         crossorigin="anonymous">
          </script>
         <div align="left" class="container my-2">
-            <h1>Employee List</h1>
-            <a th:href= "@{/shownewemployeeform}" class="btn btn-success btn-sm mb-3">Add Employee</a>
+            <h1>Services List</h1>
+            <a th:href= "@{/shownewservicesform}" class="btn btn-success btn-sm mb-3">Add Services</a>
             <table class="table table-hover table-responsive table-light">
                 <thead class="table-dark">
-                <th>Employee Id</th>
-                <th>Employee Name</th>
-                <th>Employee Email</th>
+                <th>Services Id</th>
+                <th>Services Name</th>
                 <th>Action</th>
                 </thead>
                 <tbody>
-                    <tr th:each="employee : ${listemployee}">
-                        <td th:text="${employee.employeeId}">
-                        <td th:text="${employee.employeeName}">
-                        <td th:text="${employee.email}">
-                        <td><a th:href="@{/showformupdate/{id}(id=${employee.employeeId})}" class="btn btn-primary">Update</a>
+                    <tr th:each="services : ${listservices}">
+                        <td th:text="${services.servicesId}">
+                        <td th:text="${services.servicesName}">
+                        <td><a th:href="@{/showformupdateservices/{id}(id=${services.servicesId})}" class="btn btn-primary">Update</a>
                             &nbsp;
-                        <a th:href="@{/deleteemployee/{id}(id=${employee.employeeId})}" class="btn btn-danger">Delete</a>
+                        <a th:href="@{/deleteservices/{id}(id=${services.servicesId})}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 </tbody>

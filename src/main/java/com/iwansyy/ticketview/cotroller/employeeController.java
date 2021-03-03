@@ -14,52 +14,76 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
  * @author iwansy
  */
 
+
 @Controller
 public class employeeController {
+
     @Autowired
     private employeeService employeeService;
-    
-    @GetMapping("/")
-    public String viewEmployeePage(Model model){
-        model.addAttribute("listEmployee", employeeService.getAllEmployee());
+
+    @GetMapping("/employee")
+    public String viewEmployeePage(Model model) {
+        model.addAttribute("listemployee", employeeService.getAllEmployee());
         return "index";
     }
-    
-    @GetMapping("/showNewEmployeeForm")
-    public String showNewEmployeeForm(Model model){
+
+//    @RequestMapping(value = "/showNewEmployeeForm", method = RequestMethod.POST)
+//    public String showNewEmployeeForm(
+//            @PathVariable())
+////            @ModelAttribute("new_employee") Employee employee,
+////            @RequestParam(value = "employeeId", required = false) String employeeId,
+////            @RequestParam(value = "employeeName", required = false) String employeeName,
+////            @RequestParam(value = "password", required = false) String password
+//    ) {
+//            Employee employeeOne = employeeService.findOne(employeeId);
+//            
+//        
+//        
+////            Employee employees = new Employee(employeeId, employeeName, password);
+//            
+//            
+//        return "new_employee";
+//    }
+
+    @GetMapping("/shownewemployeeform")
+    public String showNewEmployeeForm(Model model) {
         Employee employee = new Employee();
+        System.out.println(model.addAttribute("employee", employee));
         model.addAttribute("employee", employee);
+
         return "new_employee";
     }
-    
-    @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee){
+    @PostMapping("/saveemployee")
+    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         this.employeeService.save(employee);
-        return "redirect:/";
+        return "redirect:/employee";
     }
-    
-    @GetMapping("/showFormUpdate/{id}")
-   public String showFromUpdate(@PathVariable (value = "id") String id, Model model){
-       Employee employee = employeeService.getEmployeeById(id);
-       model.addAttribute("employee", employee);
-       return "update_employee";
-   }
-    
-   @GetMapping("/deleteEmployee/{id}")
-   public String deleteEmployee(@PathVariable (value = "id") String id){
-       this.employeeService.deleteById(id);
-       return "redirect:/";  
-   }
-   
-  @GetMapping("/page/{pageNo}")
-  public String findPaginated(@PathVariable (value = "pageNo") int pageNo, Model model){
-      return null;
-  }
-    
+
+    @GetMapping("/showformupdate/{id}")
+    public String showFromUpdate(@PathVariable(value = "id") String id, Model model) {
+        Employee employee = employeeService.getEmployeeById(id);
+        model.addAttribute("employee", employee);
+        return "update_employee";
+    }
+
+    @GetMapping("/deleteemployee/{id}")
+    public String deleteEmployee(@PathVariable(value = "id") String id) {
+        this.employeeService.deleteById(id);
+        return "redirect:/employee";
+    }
+
+    @GetMapping("/page/{pageno}")
+    public String findPaginated(@PathVariable(value = "pageno") int pageNo, Model model) {
+        return null;
+    }
+
 }
