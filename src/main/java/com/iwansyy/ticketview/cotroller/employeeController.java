@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author iwansy
  */
-
-
 @Controller
 public class employeeController {
 
@@ -53,7 +51,7 @@ public class employeeController {
 //            
 //        return "new_employee";
 //    }
-
+    
     @GetMapping("/shownewemployeeform")
     public String showNewEmployeeForm(Model model) {
         Employee employee = new Employee();
@@ -62,18 +60,50 @@ public class employeeController {
 
         return "new_employee";
     }
+
     @PostMapping("/saveemployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         this.employeeService.save(employee);
         return "redirect:/employee";
     }
 
+    @RequestMapping(value = "/showformupdate/{id}", method = RequestMethod.POST)
+    public String showUpdateForm(
+            @RequestParam(value = "employeeId", required = false) String employeeId,
+            @RequestParam(value = "employeeName", required = false) String employeeName,
+            @RequestParam(value = "password", required = false) String password
+    ) {
+        
+         Employee employee = new Employee(employeeId, employeeName, password);
+//         employee.setEmployeeId(employeeId);
+//         employee.setEmployeeName(employeeName);
+//         employee.setPassword(password);
+         
+         employeeService.save(employee);
+         return "redirect:/employee";
+    }
+
+    
     @GetMapping("/showformupdate/{id}")
     public String showFromUpdate(@PathVariable(value = "id") String id, Model model) {
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("employee", employee);
         return "update_employee";
     }
+//
+//    @PostMapping("/updateemployee/{id}")
+//    public String updateEmployee(@ModelAttribute("employee") Employee employee) {
+//
+//        this.employeeService.save(employee);
+//        return "redirect:/employee";
+//    }
+
+//    @GetMapping("/showformupdate/{id}")
+//    public String showFromUpdate(@PathVariable(value = "id") String id, Model model) {
+//        Employee employee = employeeService.getEmployeeById(id);
+//        model.addAttribute("employee", employee);
+//        return "update_employee";
+//    }
 
     @GetMapping("/deleteemployee/{id}")
     public String deleteEmployee(@PathVariable(value = "id") String id) {
