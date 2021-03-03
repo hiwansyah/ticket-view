@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+              rel="stylesheet" 
+              integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+              crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Status Management</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="d-flex flex-column">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" 
+                crossorigin="anonymous">
+        </script>
+        <div align="left" class="container my-2">
+            <h1>Status List</h1>
+            <a th:href= "@{/showAddStatus}" class="btn btn-success btn-sm mb-3">Add Priority</a>
+            <table class="table table-hover table-responsive table-light">
+                <thead class="table-dark">
+                <th>Id</th>
+                <th>Status</th>
+                <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr th:each="status : ${listStatus}">
+                        <td th:text="${status.statusId}">
+                        <td th:text="${status.statusName}">
+                        <td><a th:href="@{/showFormUpdateStatus/{id}(id=${status.statusId})}" class="btn btn-primary">Update</a>
+                            &nbsp;
+                            <a th:href="@{/deleteStatus/{id}(id=${status.statusId})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

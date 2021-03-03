@@ -6,11 +6,14 @@
 
 package com.iwansyy.ticketview.repository;
 
+import com.iwansyy.ticketview.entities.Priority;
+import org.springframework.data.repository.CrudRepository;
+
 /**
  *
  * @author iwansy
  */
 
-public interface priorityRepository {
+public interface priorityRepository extends CrudRepository<Priority, String>{
     
 }
