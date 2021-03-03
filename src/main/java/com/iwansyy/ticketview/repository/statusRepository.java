@@ -6,11 +6,14 @@
 
 package com.iwansyy.ticketview.repository;
 
+import com.iwansyy.ticketview.entities.Status;
+import org.springframework.data.repository.CrudRepository;
+
 /**
  *
  * @author iwansy
  */
 
-public interface statusRepository {
+public interface statusRepository extends CrudRepository<Status, String>{
     
 }
