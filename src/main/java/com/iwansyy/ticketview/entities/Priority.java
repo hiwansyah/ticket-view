@@ -53,6 +53,14 @@ public class Priority implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "priorityId", fetch = FetchType.LAZY)
     private List<Ticket> ticketList;
 
+    public Priority(String priorityName, Integer responseTime, Integer resolveTime) {
+        this.priorityName = priorityName;
+        this.responseTime = responseTime;
+        this.resolveTime = resolveTime;
+    }
+
+    
+    
     public Priority() {
     }
 

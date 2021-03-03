@@ -33,7 +33,11 @@
                         <td th:text="${priority.priorityName}">
                         <td th:text="${priority.resolveTime}">
                         <td th:text="${priority.responseTime}">
-                        <td><a th:href="@{/showFormUpdatePriority/{id}(id=${priority.priorityId})}" class="btn btn-primary">Update</a>
+                        <td>
+                            
+                            <a th:href="@{/showFormUpdatePriority/{id}(id=${priority.priorityId})}" class="btn btn-primary">Update</a>
+                            
+                            <!-- Fix -->
                             &nbsp;
                             <a th:href="@{/deletePriority/{id}(id=${priority.priorityId})}" class="btn btn-danger">Delete</a>
                         </td>

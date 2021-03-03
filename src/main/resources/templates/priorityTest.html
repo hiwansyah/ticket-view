@@ -25,7 +25,10 @@ and open the template in the editor.
             <h1>Priority Management</h1>
             <hr>
             <h2>Update Status</h2>
-            <form action="#" th:action="@{/savePriority}" th:object ="${priority}" method="POST">
+            <!-- action ketika submit form-->
+            <form action="#" th:action="@{/saveUpdatePriority}" th:object ="${priority}" method="POST">
+            
+            <!-- form input-->    
             <input type="text" th:field="*{priorityId}" placeholder="Id" class="form-control mb-4 col-4">
             <input type="text" th:field="*{priorityName}" placeholder="Priority" class="form-control mb-4 col-4">
             <input type="text" th:field="*{responseTime}" placeholder="Respon Time" class="form-control mb-4 col-4">
