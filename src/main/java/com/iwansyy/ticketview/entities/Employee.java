@@ -64,12 +64,12 @@ public class Employee implements Serializable {
 
     public Employee() {
     }
-//
-//    public Employee(String employeeId, String employeeName, String password) {
-//        this.employeeId = employeeId;
-//        this.employeeName = employeeName;
-//        this.password = password;
-//    }
+
+    public Employee(String employeeId, String employeeName, String password) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.password = password;
+    }
     
 
     public Employee(String employeeId) {
