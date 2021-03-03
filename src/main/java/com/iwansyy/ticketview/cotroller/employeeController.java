@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.iwansyy.ticketview.cotroller;
 
 import com.iwansyy.ticketview.entities.Employee;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author iwansy
  */
+
 @Controller
 public class employeeController {
 
@@ -33,24 +35,6 @@ public class employeeController {
         model.addAttribute("listemployee", employeeService.getAllEmployee());
         return "index";
     }
-
-//    @RequestMapping(value = "/showNewEmployeeForm", method = RequestMethod.POST)
-//    public String showNewEmployeeForm(
-//            @PathVariable())
-////            @ModelAttribute("new_employee") Employee employee,
-////            @RequestParam(value = "employeeId", required = false) String employeeId,
-////            @RequestParam(value = "employeeName", required = false) String employeeName,
-////            @RequestParam(value = "password", required = false) String password
-//    ) {
-//            Employee employeeOne = employeeService.findOne(employeeId);
-//            
-//        
-//        
-////            Employee employees = new Employee(employeeId, employeeName, password);
-//            
-//            
-//        return "new_employee";
-//    }
     
     @GetMapping("/shownewemployeeform")
     public String showNewEmployeeForm(Model model) {
@@ -75,12 +59,8 @@ public class employeeController {
     ) {
         
          Employee employee = new Employee(employeeId, employeeName, password);
-//         employee.setEmployeeId(employeeId);
-//         employee.setEmployeeName(employeeName);
-//         employee.setPassword(password);
-         
-         employeeService.save(employee);
-         return "redirect:/employee";
+            employeeService.save(employee);
+            return "redirect:/employee";
     }
 
     
@@ -90,7 +70,8 @@ public class employeeController {
         model.addAttribute("employee", employee);
         return "update_employee";
     }
-//
+    
+
 //    @PostMapping("/updateemployee/{id}")
 //    public String updateEmployee(@ModelAttribute("employee") Employee employee) {
 //
@@ -104,7 +85,7 @@ public class employeeController {
 //        model.addAttribute("employee", employee);
 //        return "update_employee";
 //    }
-
+    
     @GetMapping("/deleteemployee/{id}")
     public String deleteEmployee(@PathVariable(value = "id") String id) {
         this.employeeService.deleteById(id);

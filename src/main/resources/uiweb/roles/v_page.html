@@ -1,0 +1,82 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <title>User ROle | TreatU</title>
+    <head th:insert="fragments/head.html :: head">
+
+    </head>
+
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+        <div class="wrapper">
+            <nav th:insert="components/nav.html :: nav" class="navbar"></nav>
+            <aside th:insert="components/aside.html :: aside"></aside>
+            
+            <!--<div th:insert="components/content-wrapper.html :: content-wrapper"></div>-->
+            <div class="content-wrapper">
+
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0 text-dark">
+                                    <b>User Role</b><small></small>
+                                </h1>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <span class="pull-right">
+                                        <button class="btn btn-sm btn-success" type="button" data-toggle="modal" data-target="#addRole"><span class="fa fa-plus-circle"></span> Add Role</button>
+
+                                    </span>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="member">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th class="col-md-5">Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="roles : ${roles}">
+                                            <td th:id="'idRoleText'+${roles.idRole}" th:text="${roles.idRole}"></td>
+                                            <td th:id="'nameRoleText'+${roles.idRole}" th:text="${roles.nameRole}"></td>
+                                            <td>
+                    
+                                                <!--<button type="button" class="edit_record btn btn-info btn-xs" th:onclick="|editRole('${roles.idRole}', '${roles.nameRole}', '${roles.activeRole}')|"><span class="fas fa-edit"></span> Edit</button>-->
+                                               <!--<button type="button" class="edit_record btn btn-info btn-xs" th:onclick="${'editRole('+roles.idRole+', '+roles.nameRole+', '${'+roles.activeRole+')'}"><span class="fas fa-edit"></span> Edit</button>-->
+                                                <button type="button" class="edit_record btn btn-info btn-xs" th:onclick="|editRole('${role}')|"><span class="fas fa-edit"></span> Edit</button>
+                                        
+                                               
+                                                <button type="button" class="remove_record btn btn-danger btn-xs" th:onclick="|removeRole('${roles.idRole}')|"><span class="fas fa-trash"></span> Remove</button>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            
+            <form th:insert="roles/v_add.html :: form" id="add-row-form" th:action="@{/roles/add}" th:object="${addRole}" method="POST"></form>
+            <form th:insert="roles/v_edit.html :: form" id="add-row-form" th:action="@{/roles/edit}" th:object="${editRole}" method="POST"></form>
+            <form th:insert="roles/v_remove.html :: form" id="add-row-form" th:action="@{/roles/remove}" th:object="${removeRole}" method="POST"></form>
+            <footer th:insert="components/footer.html :: footer"></footer>
+        </div>
+
+        <div th:insert="components/foot.html :: foot"></div>
+        <script src="js/helper/role.js"></script>
+    </body>
+</html>
