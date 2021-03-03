@@ -64,11 +64,12 @@ public class priorityController {
     
     //menyimpan priority update
     @RequestMapping(value = "/saveUpdatePriority/{id}", method = RequestMethod.POST)
-    public String savaUpdatePriority(@PathVariable (value = "id") String id, Model model
-//            @RequestParam String id,
-//            @RequestParam String name, 
-//            @RequestParam Integer RespTime, 
-//            @RequestParam Integer ResolvTime
+    public String savaUpdatePriority(
+            
+            @RequestParam String id,
+            @RequestParam String name, 
+            @RequestParam Integer RespTime, 
+            @RequestParam Integer ResolvTime
     ){
     
         Priority priority = new Priority();
