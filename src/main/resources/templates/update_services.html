@@ -12,7 +12,7 @@ and open the template in the editor.
           crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Employee Management</title>
+        <title>Services Management</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -22,20 +22,16 @@ and open the template in the editor.
             crossorigin="anonymous">
         </script>
         <div class="container">
-            <h1>Employee Management</h1>
+            <h1>Services Management</h1>
             <hr>
-            <h2>Update Employee</h2>
-            <form action="#" th:action="@{/saveemployee}" th:object ="${employee}" method="POST">
-            <input type="text" th:field="*{employeeId}" placeholder=" .. . Id " class="form-control mb-4 col-4">
-            <input type="text" th:field="*{employeeName}" placeholder=" .. . Name " class="form-control mb-4 col-4">
-            <input type="text" th:field="*{password}" placeholder=" .. . Pass " class="form-control mb-4 col-4">
-            <input type="text" th:field="*{email}" placeholder=" .. . Email " class="form-control mb-4 col-4">
-            <input type="text" th:field="*{positionId.positionId}" placeholder=" .. . Position Id " class="form-control mb-4 col-4">
-            <input type="text" th:field="*{divisionId.divisionId}" placeholder=" .. . Division Id" class="form-control mb-4 col-4">
-            <button type="submit" class="btn btn-success">Update Employee</button>
+            <h2>Update Services</h2>
+            <form action="#" th:action="@{/saveservices}" th:object ="${services}" method="POST">
+            <input type="text" th:field="*{servicesId}" placeholder=" .. . Id " class="form-control mb-4 col-4">
+            <input type="text" th:field="*{servicesName}" placeholder=" .. . Name " class="form-control mb-4 col-4">
+            <button type="submit" class="btn btn-success">Update Services</button>
             </form>
             <hr>
-            <a th:href = "@{/}">Back to Employee List</a>
+            <a th:href = "@{/}">Back to Services List</a>
         </div>
     </body>
 </html>
