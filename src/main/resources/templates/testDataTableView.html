@@ -5,69 +5,69 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
+
         <link th:href="@{/styles/css/jquery.dataTables.css}" rel="stylesheet" type="text/css">
-		<link th:href="@{/styles/syntax/shCore.css}" rel="stylesheet" type="text/css">	
-		<link th:href="@{/styles/css/demo.css}" rel="stylesheet" type="text/css">
-	
-		<style type="text/css" class="init">
-		</style>
+        <link th:href="@{/styles/syntax/shCore.css}" rel="stylesheet" type="text/css">	
+        <link th:href="@{/styles/css/demo.css}" rel="stylesheet" type="text/css">
 
-	<script type="text/javascript" language="javascript" th:src="@{https://code.jquery.com/jquery-3.5.1.js}"></script>
-	<script type="text/javascript" language="javascript" th:src="@{/styles/js/jquery.dataTables.js}"></script>
-	<script type="text/javascript" language="javascript" th:src="@{/styles/syntax/shCore.js}"></script>
-	<script type="text/javascript" language="javascript" th:src="@{/styles/js/demo.js}"></script>
-	
-	<script type="text/javascript" language="javascript" class="init">
-		$(document).ready(function() {
-			$('#example').DataTable();
-		});
+        <style type="text/css" class="init">
+        </style>
 
-	</script>
-        
+        <script type="text/javascript" language="javascript" th:src="@{https://code.jquery.com/jquery-3.5.1.js}"></script>
+        <script type="text/javascript" language="javascript" th:src="@{/styles/js/jquery.dataTables.js}"></script>
+        <script type="text/javascript" language="javascript" th:src="@{/styles/syntax/shCore.js}"></script>
+        <script type="text/javascript" language="javascript" th:src="@{/styles/js/demo.js}"></script>
+
+        <script type="text/javascript" language="javascript" class="init">
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+
+        </script>
+
     </head>
     <body class="dt-example">
-        
+
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
-        
-        <div class="container">
-		<section>
-			<h1>Priority <span>- Management</span></h1>
-			
-			<div class="demo-html">
-				<table id="example" class="display" style="width:100%">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Priority</th>
-							<th>Respon Time</th>
-							<th>Resolution Time</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-                                            
-                                            <tr th:each="priority : ${listPriority}">
-                                                
-                                                <td th:text="${priority.priorityId}">
-                                                <td th:text="${priority.priorityName}">
-                                                <td th:text="${priority.responseTime}">
-                                                <td th:text="${priority.resolveTime}">
-                                                <td>
-                                                    <a th:href="@{/showFormUpdatePriority/{id}(id=${priority.priorityId})}" class="btn btn-primary">Update</a>
-                                                    <!-- Fix -->
-                                                    &nbsp;
-                                                    <a th:href="@{/deletePriority/{id}(id=${priority.priorityId})}" class="btn btn-danger">Delete</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
 
-				</table>
-			</div>
-		</section>
-	</div>
-        
+        <div class="container">
+            <section>
+                <h1>Priority <span>- Management</span></h1>
+
+                <div class="demo-html">
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Priority</th>
+                                <th>Respon Time</th>
+                                <th>Resolution Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr th:each="priority : ${listPriority}">
+
+                                <td th:text="${priority.priorityId}">
+                                <td th:text="${priority.priorityName}">
+                                <td th:text="${priority.responseTime}">
+                                <td th:text="${priority.resolveTime}">
+                                <td>
+                                    <a th:href="@{/showFormUpdatePriority/{id}(id=${priority.priorityId})}" class="btn btn-primary">Update</a>
+                                    <!-- Fix -->
+                                    &nbsp;
+                                    <a th:href="@{/deletePriority/{id}(id=${priority.priorityId})}" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </section>
+        </div>
+
     </body>
 </html>
