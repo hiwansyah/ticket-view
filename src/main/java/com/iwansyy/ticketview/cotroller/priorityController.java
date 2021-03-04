@@ -29,6 +29,14 @@ public class priorityController {
     @Autowired
     private priorityServiceImplement prioServImp;
     
+    //test datatable
+    @RequestMapping(value = "/testDataTable", method = RequestMethod.GET)
+    public String getPriorityListTestDataTable(Model model){
+        model.addAttribute("listPriority", prioServImp.getAll());
+        
+        return "testDataTableView";
+    }
+    
     //menampilkan daftar priority
     @GetMapping("/showPriority")
     public String showPriorityList(Model m){
